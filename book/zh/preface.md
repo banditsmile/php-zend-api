@@ -1,19 +1,19 @@
 PHP ZEND API
 ============
 
-#### 输出相关
-- - -
+### 输出相关
+
 1. `php_printf(format, var)`
 2. `PHPWRITE(string, strlen(string))`
 3. `spprintf(char *, length, format, char *)`
 4. `snprintf(char **, length, char *)`
 
-#### 参数相关
-- - -
+### 参数相关
+
 1. `int zend_parse_parameters(int num_args TSRMLS_DC, char *type_spec, ...)`
 
-#### 返回值相关
-- - -
+### 返回值相关
+
 1. `RETURN_NULL()`
 2. `RETUTN_BOOL(b)`
 3. `RETUTN_TRUE`
@@ -24,9 +24,10 @@ PHP ZEND API
 8. `RETURN_STRINGL(str, len, dup)`
 9. `RETURN_EMPTY_STRING()`
 
-#### 数组相关
-- - -
-关联数组：
+### 数组相关
+
+#### 关联数组：
+
 1. `int add_assoc_long(zval *arg, char *key, long n)`
 2. `add_assoc_null(zval *arg, char *key)`
 3. `add_assoc_bool(zval *arg, char *key, int b)`
@@ -36,7 +37,8 @@ PHP ZEND API
 7. `int add_assoc_stringl(zval *arg, char *key, char *str, uint len, int dup);`
 8. `int add_assoc_zval(zval *arg, char *key, zval *value)`
 
-索引数组：
+#### 索引数组：
+
 1. `int add_index_long(zval *arg, ulong idx, long n)`
 2. `int add_index_null(zval *arg, ulong idx)`
 3. `int add_index_bool(zval *arg, ulong idx, int b)`
@@ -54,14 +56,16 @@ PHP ZEND API
 15. `int add_next_index_stringl(zval *arg, const char *str, uint length, int duplicate)`
 16. `int add_next_index_zval(zval *arg, zval *value)`
 
-#### Hash Table
-- - -
-startup/shutdown：
+### Hash Table
+
+#### startup/shutdown：
+
 1. `int zend_hash_init(HashTable *ht,uint nSize, hash_func_t pHashFunction, dtor_func_t pDestructor, zend_bool persistent);`
 2. `void zend_hash_destroy(HashTable *ht)`
 3. `void zend_hash_clean(HashTable *ht)`
 
-additions/updates/changes：
+#### additions/updates/changes：
+
 1. `int zend_hash_update(HashTable *ht, const char *arKey, uint nKeyLength, void *pData, uint nDataSize, void **pDest)`
 2. `int zend_hash_add(HashTable *ht, const char *arKey, uint nKeyLength, void *pData, uint nDataSize, void **pDest)`
 2. `ulong zend_get_hash_value(char *arKey, uint nKeyLength)`
@@ -78,23 +82,27 @@ additions/updates/changes：
 14. `void zend_hash_apply_with_arguments(HashTable *ht TSRMLS_DC, apply_func_args_t apply_func, int, ...)`
 15. `void zend_hash_reverse_apply(HashTable *ht, apply_func_t apply_func TSRMLS_DC);`
 
-Deletes：
+#### Deletes：
+
 1. `int zend_hash_del(HashTable *ht, const char *arKey, uint nKeyLength)`
 2. `int zend_hash_quick_del(HashTable *ht, const char *arKey, uint nKeyLength, ulong h)`
 3. `zend_hash_index_del(HashTable *ht, ulong h)`
 
-Data retreival：
+#### Data retreival：
+
 1. `int zend_hash_find(const HashTable *ht, const char *arKey, uint nKeyLength, void **pData)`
 2. `int zend_hash_index_find(const HashTable *ht, ulong h, void **pData)`
 3. `int zend_hash_quick_find(const HashTable *ht, const char *arKey, uint nKeyLength, ulong h, void **pData);`
 
-Misc：
+#### Misc：
+
 1. `int zend_hash_exists(const HashTable *ht, const char *arKey, uint nKeyLength)`
 2. `int zend_hash_quick_exists(const HashTable *ht, const char *arKey, uint nKeyLength, ulong h)`
 3. `int zend_hash_index_exists(const HashTable *ht, ulong h)`
 4. `ulong zend_hash_next_free_element(const HashTable *ht)`
 
-traversing：
+#### traversing：
+
 1. `int zend_hash_has_more_elements(ht)`
 2. `int zend_hash_move_forward(ht)`
 3. `int zend_hash_move_backwards(ht)`
@@ -105,7 +113,8 @@ traversing：
 8. `void zend_hash_internal_pointer_end(ht)`
 9. `int zend_hash_update_current_key(ht, key_type, str_index, str_length, num_index)`
 
-Copying, merging and sorting：
+#### Copying, merging and sorting：
+
 1. `void zend_hash_copy(HashTable *target, HashTable *source, copy_ctor_func_t pCopyConstructor, void *tmp, uint size)`
 2. ` void _zend_hash_merge(HashTable *target, HashTable *source, copy_ctor_func_t pCopyConstructor, void *tmp, uint size, int overwrite ZEND_FILE_LINE_DC)`
 3. `void zend_hash_merge_ex(HashTable *target, HashTable *source, copy_ctor_func_t pCopyConstructor, uint size, merge_checker_func_t pMergeSource, void *pParam)`
@@ -113,13 +122,15 @@ Copying, merging and sorting：
 5. `int zend_hash_compare(HashTable *ht1, HashTable *ht2, compare_func_t compar, zend_bool ordered TSRMLS_DC)`
 6. `int zend_hash_minmax(const HashTable *ht, compare_func_t compar, int flag, void **pData TSRMLS_DC);`
 
-debug：
+#### debug：
+
 1. `void zend_hash_display_pListTail(const HashTable *ht)`
 2. `void zend_hash_display(const HashTable *ht)`
 
-#### Zval相关
-- - -
-accessing a zval：
+### Zval相关
+
+#### accessing a zval：
+
 1. `(zval).value.lval Z_LVAL(zval)`
 2. `((zend_bool)(zval).value.lval) Z_BVAL(zval)`
 3. `(zval).value.dval Z_DVAL(zval)`
@@ -138,7 +149,8 @@ accessing a zval：
 16. `Z_*_P(zval_p)` 1-15重复一遍 相当于 `Z_*(*zval)`
 17. `Z_*_PP(zval_pp)` 1-15重复一遍 相当于 `Z_*(**zval)`
 
-reference count and is-ref：
+#### reference count and is-ref：
+
 1. `Z_REFCOUNT(z)` Retrieve reference count
 2. `Z_SET_REFCOUNT(z, rc)` Set reference count to rc
 3. `Z_ADDREF(z)` Increment reference count
@@ -150,7 +162,8 @@ reference count and is-ref：
 9. `Z_*_P(zval_p)` 1-8重复一遍 相当于 `Z_*(*zval)`
 10. `Z_*_PP(zval_pp)` 1-8重复一遍 相当于 `Z_*(**zval)`
 
-setting types and values：
+#### setting types and values：
+
 1. `ZVAL_RESOURCE(z, l)`
 2. `ZVAL_BOOL(z, b)`
 3. `ZVAL_NULL(z)`
@@ -161,7 +174,8 @@ setting types and values：
 8. `ZVAL_EMPTY_STRING(z)`
 9. `ZVAL_ZVAL(z, zv, copy, dtor)`
 
-allocate and initialize a zval：
+#### allocate and initialize a zval：
+
 1. `INIT_PZVAL(zp)` Set reference count and isref 0
 2. `INIT_ZVAL(z)` Initialize and set NULL, no pointer
 3. `ALLOC_INIT_ZVAL(zp)` Allocate and initialize a zval
@@ -179,8 +193,8 @@ allocate and initialize a zval：
 15. `SEPARATE_ARG_IF_REF(varptr)`
 16. `READY_TO_DESTROY(zv)`
 
-#### 内存分配相关
-- - -
+### 内存分配相关
+
 1. `viod* emalloc(size_t size)`
 2. `void* ecalloc(size_t nmemb, size_t size)`
 3. `void* erealloc(void *ptr, size_t size)`
@@ -196,14 +210,16 @@ allocate and initialize a zval：
 13. `void pefree(void *ptr, int persist)`
 14. `void* safe_pemalloc(size_t nmemb, size_t size, size_t addtl, int persist)`
 
-#### 常量相关
-- - -
-flags：
+### 常量相关
+
+#### flags：
+
 1. `#define CONST_CS             (1<<0)              /* Case Sensitive */`
 2. `#define CONST_PERSISTENT        (1<<1)              /* Persistent */`
 3. `#define CONST_CT_SUBST          (1<<2)              /* Allow compile-time substitution */`
 
-register：
+#### register：
+
 1. `REGISTER_LONG_CONSTANT(name, lval, flags)`
 2. `REGISTER_DOUBLE_CONSTANT(name, dval, flags)`
 3. `REGISTER_STRING_CONSTANT(name, str, flags)`
@@ -218,18 +234,21 @@ register：
 12. `REGISTER_MAIN_STRINGL_CONSTANT(name, str, len, flags)`
 13. `int zend_register_constant(zend_constant *c TSRMLS_DC)`
 
-get：
+#### get：
+
 1. `int zend_get_constant(const char *name, uint name_len, zval *result TSRMLS_DC)`
 2. `zend_constant *zend_quick_get_constant(const zend_literal *key, ulong flags TSRMLS_DC)`
 3. `zend_constant *zend_quick_get_constant(const zend_literal *key, ulong flags TSRMLS_DC);`
 
-copy：
+#### copy：
+
 1. `void zend_copy_constants(HashTable *target, HashTable *sourc)`
 2. `void copy_zend_constant(zend_constant *c)`
 
-#### 对象相关
-- - -
-init：
+### 对象相关
+
+#### init：
+
 1. `INIT_CLASS_ENTRY(class_container, class_name, functions)`
 2. `INIT_CLASS_ENTRY_INIT_METHODS(class_container, functions, handle_fcall, handle_propget, handle_propset, handle_propunset, handle_propisset)`
 3. `INIT_OVERLOADED_CLASS_ENTRY(class_container, class_name, functions, handle_fcall, handle_propget, handle_propset)`
@@ -243,13 +262,15 @@ init：
 11. `void zend_object_store_ctor_failed(zval *zobject TSRMLS_DC)`
 12. `zval *zend_object_create_proxy(zval *object, zval *member TSRMLS_DC)`
 
-register：
+#### register：
+
 1. `zend_class_entry *zend_register_internal_class(zend_class_entry *class_entry TSRMLS_DC)`
 2. `zend_class_entry *zend_register_internal_interface(zend_class_entry *orig_class_entry TSRMLS_DC)`
 3. `int zend_register_class_alias(name, ce)`
 4. `int zend_register_ns_class_alias(ns, name, ce)`
 
-declaring class constants：
+#### declaring class constants：
+
 1. `int zend_declare_class_constant(zend_class_entry *ce, const char *name, size_t name_length, zval *value TSRMLS_DC)`
 2. `int zend_declare_class_constant_null(zend_class_entry *ce, const char *name, size_t name_length TSRMLS_DC)`
 3. `int zend_declare_class_constant_long(zend_class_entry *ce, const char *name, size_t name_length, long value TSRMLS_DC)`
@@ -258,10 +279,12 @@ declaring class constants：
 6. `int zend_declare_class_constant_stringl(zend_class_entry *ce, const char *name, size_t name_length, const char *value, size_t value_length TSRMLS_DC)`
 7. `int zend_declare_class_constant_string(zend_class_entry *ce, const char *name, size_t name_length, const char *value TSRMLS_DC)`
 
-implements：
+#### implements：
+
 1. `void zend_class_implements(zend_class_entry *class_entry TSRMLS_DC, int num_interfaces, ...)`
 
-declaring property：
+#### declaring property：
+
 1. . `int zend_declare_property(zend_class_entry *ce, const char *name, int name_length, zval *property, int access_type TSRMLS_DC)`
 2. `int zend_declare_property_ex(zend_class_entry *ce, const char *name, int name_length, zval *property, int access_type, const char *doc_comment, int doc comment_len TSRMLS_DC)`
 3. `int zend_declare_property_null(zend_class_entry *ce, const char *name, int name_length, int access_type TSRMLS_DC)`
@@ -271,7 +294,8 @@ declaring property：
 7. `int zend_declare_property_string(zend_class_entry *ce, const char *name, int name_length, const char *value, int access_type TSRMLS_DC)`
 8. `int zend_declare_property_stringl(zend_class_entry *ce, const char *name, int name_length, const char *value, int value_len, int access_type TSRMLS_DC)`
 
-update：
+#### update：
+
 1. `void zend_update_class_constants(zend_class_entry *class_type TSRMLS_DC)`
 2. `void zend_update_property(zend_class_entry *scope, zval *object, const char *name, int name_length, zval *value TSRMLS_DC)`
 3. `void zend_update_property_null(zend_class_entry *scope, zval *object, const char *name, int name_length TSRMLS_DC)`
@@ -288,7 +312,8 @@ update：
 14. `int zend_update_static_property_string(zend_class_entry *scope, const char *name, int name_length, const char *value TSRMLS_DC)`
 15. `int zend_update_static_property_stringl(zend_class_entry *scope, const char *name, int name_length, const char *value, int value_length TSRMLS_DC)`
 
-read：
+#### read：
+
 1. `zval *zend_read_property(zend_class_entry *scope, zval *object, const char *name, int name_length, zend_bool silent TSRMLS_DC)`
 2. `zval *zend_read_static_property(zend_class_entry *scope, const char *name, int name_length, zend_bool silent TSRMLS_DC)`
 3. `zend_class_entry *zend_get_class_entry(const zval *zobject TSRMLS_DC)`
@@ -299,13 +324,15 @@ read：
 8. `void *zend_object_store_get_object(const zval *object TSRMLS_DC)`
 9. `void *zend_object_store_get_object_by_handle(zend_object_handle handle TSRMLS_DC)`
 
-copy and free：
+#### copy and free：
+
 1. `void zend_objects_clone_members(zend_object *new_object, zend_object_value new_obj_val, zend_object *old_object, zend_object_handle handle TSRMLS_DC)`
 2. `zend_object_value zend_objects_clone_obj(zval *object TSRMLS_DC)`
 3. `void zend_objects_free_object_storage(zend_object *object TSRMLS_DC)`
 4. `zend_object_value zend_objects_store_clone_obj(zval *object TSRMLS_DC)`
 
-destruct：
+#### destruct：
+
 1. `void zend_object_std_dtor(zend_object *object TSRMLS_DC)`
 2. `void zend_objects_destroy_object(zend_object *object, zend_object_handle handle TSRMLS_DC)`
 3. `void zend_objects_store_call_destructors(zend_objects_store *objects TSRMLS_DC)`
@@ -313,7 +340,8 @@ destruct：
 5. `void zend_objects_store_destroy(zend_objects_store *objects)`
 6. `void zend_objects_store_free_object_storage(zend_objects_store *objects TSRMLS_DC)`
 
-refcount and is-ref：
+#### refcount and is-ref：
+
 1. `void zend_objects_store_add_ref(zval *object TSRMLS_DC)`
 2. `void zend_objects_store_del_ref(zval *object TSRMLS_DC)`
 3. `void zend_objects_store_add_ref_by_handle(zend_object_handle handle TSRMLS_DC)`
