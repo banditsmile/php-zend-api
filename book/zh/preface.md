@@ -1,18 +1,18 @@
 PHP ZEND API
 ============
 
-### 输出相关
+## 输出相关
 
 1. `php_printf(format, var)`
 2. `PHPWRITE(string, strlen(string))`
 3. `spprintf(char *, length, format, char *)`
 4. `snprintf(char **, length, char *)`
 
-### 参数相关
+## 参数相关
 
 1. `int zend_parse_parameters(int num_args TSRMLS_DC, char *type_spec, ...)`
 
-### 返回值相关
+## 返回值相关
 
 1. `RETURN_NULL()`
 2. `RETUTN_BOOL(b)`
@@ -24,7 +24,7 @@ PHP ZEND API
 8. `RETURN_STRINGL(str, len, dup)`
 9. `RETURN_EMPTY_STRING()`
 
-### 数组相关
+## 数组相关
 
 #### 关联数组：
 
@@ -56,7 +56,7 @@ PHP ZEND API
 15. `int add_next_index_stringl(zval *arg, const char *str, uint length, int duplicate)`
 16. `int add_next_index_zval(zval *arg, zval *value)`
 
-### Hash Table
+## Hash Table
 
 #### startup/shutdown：
 
@@ -127,7 +127,7 @@ PHP ZEND API
 1. `void zend_hash_display_pListTail(const HashTable *ht)`
 2. `void zend_hash_display(const HashTable *ht)`
 
-### Zval相关
+## Zval相关
 
 #### accessing a zval：
 
@@ -193,7 +193,7 @@ PHP ZEND API
 15. `SEPARATE_ARG_IF_REF(varptr)`
 16. `READY_TO_DESTROY(zv)`
 
-### 内存分配相关
+## 内存分配相关
 
 1. `viod* emalloc(size_t size)`
 2. `void* ecalloc(size_t nmemb, size_t size)`
@@ -210,7 +210,7 @@ PHP ZEND API
 13. `void pefree(void *ptr, int persist)`
 14. `void* safe_pemalloc(size_t nmemb, size_t size, size_t addtl, int persist)`
 
-### 常量相关
+## 常量相关
 
 #### flags：
 
@@ -245,7 +245,7 @@ PHP ZEND API
 1. `void zend_copy_constants(HashTable *target, HashTable *sourc)`
 2. `void copy_zend_constant(zend_constant *c)`
 
-### 对象相关
+## 对象相关
 
 #### init：
 
