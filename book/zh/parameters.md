@@ -10,7 +10,7 @@
 返回值：SUCCESS或者FAILURE
 
 类型说明符和变量存储结构：
-![type](image/parameters1.png)
+![type](../image/parameters1.png)
 * `|`：在该符号之后的参数都是可选的
 * `/`：在该字符之前的变量如果不是通过引用传递，那么对其进行ZVAL分离，即执行`SEPARATE_ZVAL_IF_NOT_REF()`
 * `!`：在该字符之前的变量可以为特定的类型或者NULL（对于上图中的说明符，除了'b'，'l'，'d'都适用），如果传递了NULL，那么指针将会指向NULL
