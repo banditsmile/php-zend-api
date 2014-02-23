@@ -1,16 +1,23 @@
 PHP ZEND API
 ============
 
-## 输出相关
+## [输出相关](output.md)
 
-1. `php_printf(format, var)`
+1. `php_printf(format, var...)`
 2. `PHPWRITE(string, strlen(string))`
-3. `spprintf(char *, length, format, char *)`
-4. `snprintf(char **, length, char *)`
+3. `spprintf(char **, max, format, var...)`
+4. `snprintf(char *, length, format, var...)`
 
-## 参数相关
+## [参数相关](parameters.md)
 
 1. `int zend_parse_parameters(int num_args TSRMLS_DC, char *type_spec, ...)`
+2. `int zend_parse_parameters_ex(int flags, int num_args TSRMLS_DC, char *type_spec, ...)`
+3. `ZEND_BEGIN_ARG_INFO(name, pass_rest_by_reference)`
+4. `ZEND_END_ARG_INFO()`
+5. `ZEND_ARG_INFO(pass_by_ref, name)`
+6. `ZEND_ARG_PASS_INFO(pass_by_ref)`
+7. `ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)`
+8. `ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)`
 
 ## 返回值相关
 
