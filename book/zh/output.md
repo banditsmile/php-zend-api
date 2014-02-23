@@ -8,9 +8,10 @@
 > 二进制安全：[In PHP what does it mean by a function being binary-safe?](http://stackoverflow.com/questions/3264514/in-php-what-does-it-mean-by-a-function-being-binary-safe) 和 [Binary-safe](http://en.wikipedia.org/wiki/Binary-safe)
 
 参数：格式化字符串，变量列表
+
 返回值：输出的字符数
 
-**Note: **通常来说，要直接向输出流打印数据，建议改为返回字符串数据给用户，由用户决定做什么。 此规则的例外情况可能是处理二进制数据（如图像）的函数，API 要求就在函数里提供方法来存取数据。
+> Note：通常来说，要直接向输出流打印数据，建议改为返回字符串数据给用户，由用户决定做什么。 此规则的例外情况可能是处理二进制数据（如图像）的函数，API 要求就在函数里提供方法来存取数据。
 
 示例代码：
 ```c
@@ -33,7 +34,9 @@ PHP_FUNCTION(hello_world)
 2. `PHPWRITE(string, strlen(string))`
 
 描述：PHP二进制安全的输出宏。
+
 参数：字符串变量，字符串长度
+
 返回值：输出的字符数
 
 示例代码：
@@ -57,7 +60,9 @@ PHP_FUNCTION(print_str)
 3. `snprintf(char * str, length, format, var...)`
 
 描述：snprintf根据参数format来转换并格式化数据，然后将结果复制到参数str所指的字符串数组，必须先为str分配足够的内存。
+
 参数：字符串变量，字符串长度，格式化字符串，变量列表
+
 返回值：格式化后得到的字符串的长度
 
 示例代码：
@@ -79,10 +84,12 @@ PHP_FUNCTION(hello_world)
 4. `spprintf(char ** str, max, format, var...)`
 
 描述：spprintf是snprintf的动态版本，它会自动根据需要为str分配内存空间，可以通过设置max参数来限制所分配内存空间的最大值，如果此值为0，那将没有限制。
+
 参数：字符串变量地址，内存分配限制，格式化字符串，变量列表
+
 返回值：格式化后得到的字符串的长度
 
-**Note: **该函数比snprintf稍微慢点，并且如果你忘记释放该函数分配的内存，将可能导致内存泄漏。
+> Note：该函数比snprintf稍微慢点，并且如果你忘记释放该函数分配的内存，将可能导致内存泄漏。
 
 示例代码：
 ```c

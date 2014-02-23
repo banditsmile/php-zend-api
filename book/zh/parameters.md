@@ -4,15 +4,18 @@
 1. `int zend_parse_parameters(int num_args TSRMLS_DC, char *type_spec, ...)`
 
 描述：函数负责读取用户从参数堆栈传递过来的参数，并将其适当地转换后放入局部C语言变量。
+
 参数：传递给扩展函数的参数个数，参数类型说明符和一系列用来存储结果的变量指针。
+
 返回值：SUCCESS或者FAILURE
 
 类型说明符和变量存储结构：
-![type](/image/parameters1.png)
-`|`：在该符号之后的参数都是可选的
-`/`：在该字符之前的变量如果不是通过引用传递，那么对其进行ZVAL分离，即执行`SEPARATE_ZVAL_IF_NOT_REF()`
-`!`：在该字符之前的变量可以为特定的类型或者NULL（对于上图中的说明符，除了'b'，'l'，'d'都适用），如果传递了NULL，那么指针将会指向NULL
-参考PHP源代码`phpsrc/README.PARAMETER_PARSING_API`
+![type](image/parameters1.png)
+* `|`：在该符号之后的参数都是可选的
+* `/`：在该字符之前的变量如果不是通过引用传递，那么对其进行ZVAL分离，即执行`SEPARATE_ZVAL_IF_NOT_REF()`
+* `!`：在该字符之前的变量可以为特定的类型或者NULL（对于上图中的说明符，除了'b'，'l'，'d'都适用），如果传递了NULL，那么指针将会指向NULL
+
+> PHP源代码`phpsrc/README.PARAMETER_PARSING_API`文件有详细说明
 
 示例代码（出自`phpsrc/README.PARAMETER_PARSING_API`）：
 ```c
@@ -140,42 +143,58 @@ if (varargs) {
 
 2. `int zend_parse_parameters_ex(int flags, int num_args TSRMLS_DC, char *type_spec, ...)`
 
-`_ex()` 版本，多了 flags 参数——当前只支持 `ZEND_PARSE_PARAMS_QUIET` ，指明函数“安静地”执行，不输出错误消息。
+描述：`_ex()` 版本，多了 flags 参数——当前只支持 `ZEND_PARSE_PARAMS_QUIET` ，指明函数“安静地”执行，不输出错误消息。
+
+参数：标志参数，传递给扩展函数的参数个数，参数类型说明符和一系列用来存储结果的变量指针。
+
+返回值：SUCCESS或者FAILURE
 
 3. `ZEND_BEGIN_ARG_INFO(name, pass_rest_by_reference)`
 
 描述：开始扩展函数参数声明
+
 参数：扩展函数参数名称，是否通过引用传递
+
 返回值：无
 
 4. `ZEND_END_ARG_INFO()`
 
 描述：结束扩展函数参数声明
+
 参数：无
+
 返回值：无
 
 5. `ZEND_ARG_INFO(pass_by_ref, name)`
 
 描述：声明参数是否为引用传递
+
 参数：是否通过引用传递, 名称
+
 返回值：无
 
 6. `ZEND_ARG_PASS_INFO(pass_by_ref)`
 
 描述：声明参数是否为引用传递
+
 参数：是否通过引用传递
+
 返回值：无
 
 7. `ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)`
 
 描述：声明参数必须是一个对象
+
 参数：是否通过引用传递，名称，限制其继承自某个类或者实现了某个接口，是否允许为null
+
 返回值：无
 
 8. `ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)`
 
 描述：声明参数必须是一个数组
+
 参数：是否通过引用传递，名称，是否允许为null
+
 返回值：无
 
 示例代码：
