@@ -19,17 +19,19 @@ PHP ZEND API
 7. `ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)`
 8. `ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)`
 
-## 返回值相关
+## [返回值相关](return.md)
 
 1. `RETURN_NULL()`
-2. `RETUTN_BOOL(b)`
-3. `RETUTN_TRUE`
-4. `RETUTN_FALSE`
-5. `RETUTN_LONG(l)`
-6. `RETUTN_DOUBLE(d)`
-7. `RETURN_STRING(str, dup)`
-8. `RETURN_STRINGL(str, len, dup)`
+2. `RETURN_BOOL(b)`
+3. `RETURN_TRUE`
+4. `RETURN_FALSE`
+5. `RETURN_LONG(l)`
+6. `RETURN_DOUBLE(d)`
+7. `RETURN_STRING(str, duplicate)`
+8. `RETURN_STRINGL(str, len, duplicate)`
 9. `RETURN_EMPTY_STRING()`
+10. `RETURN_RESOURCE(l)`
+11. `RETURN_ZVAL(zv, copy, dtor)`
 
 ## 数组相关
 

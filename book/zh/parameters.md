@@ -1,7 +1,7 @@
 参数相关
 =======
 
-1. `int zend_parse_parameters(int num_args TSRMLS_DC, char *type_spec, ...)`
+1、`int zend_parse_parameters(int num_args TSRMLS_DC, char *type_spec, ...)`
 
 描述：函数负责读取用户从参数堆栈传递过来的参数，并将其适当地转换后放入局部C语言变量。
 
@@ -141,7 +141,7 @@ if (varargs) {
 }
 ```
 
-2. `int zend_parse_parameters_ex(int flags, int num_args TSRMLS_DC, char *type_spec, ...)`
+2、`int zend_parse_parameters_ex(int flags, int num_args TSRMLS_DC, char *type_spec, ...)`
 
 描述：`_ex()` 版本，多了 flags 参数——当前只支持 `ZEND_PARSE_PARAMS_QUIET` ，指明函数“安静地”执行，不输出错误消息。
 
@@ -149,7 +149,7 @@ if (varargs) {
 
 返回值：SUCCESS或者FAILURE
 
-3. `ZEND_BEGIN_ARG_INFO(name, pass_rest_by_reference)`
+3、`ZEND_BEGIN_ARG_INFO(name, pass_rest_by_reference)`
 
 描述：开始扩展函数参数声明
 
@@ -157,7 +157,7 @@ if (varargs) {
 
 返回值：无
 
-4. `ZEND_END_ARG_INFO()`
+4、`ZEND_END_ARG_INFO()`
 
 描述：结束扩展函数参数声明
 
@@ -165,7 +165,7 @@ if (varargs) {
 
 返回值：无
 
-5. `ZEND_ARG_INFO(pass_by_ref, name)`
+5、`ZEND_ARG_INFO(pass_by_ref, name)`
 
 描述：声明参数是否为引用传递
 
@@ -173,7 +173,7 @@ if (varargs) {
 
 返回值：无
 
-6. `ZEND_ARG_PASS_INFO(pass_by_ref)`
+6、`ZEND_ARG_PASS_INFO(pass_by_ref)`
 
 描述：声明参数是否为引用传递
 
@@ -181,7 +181,7 @@ if (varargs) {
 
 返回值：无
 
-7. `ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)`
+7、`ZEND_ARG_OBJ_INFO(pass_by_ref, name, classname, allow_null)`
 
 描述：声明参数必须是一个对象
 
@@ -189,7 +189,7 @@ if (varargs) {
 
 返回值：无
 
-8. `ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)`
+8、`ZEND_ARG_ARRAY_INFO(pass_by_ref, name, allow_null)`
 
 描述：声明参数必须是一个数组
 

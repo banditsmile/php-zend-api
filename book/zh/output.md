@@ -1,7 +1,7 @@
 输出相关
 =======
 
-1. `php_printf(format, var...)`
+1、`php_printf(format, var...)`
 
 描述：标准的 C 语言的 printf 针对 PHP 的版本。与 printf 不同，它不是打印到进程的 STDOUT 通道，而是到当前的[输出流](http://www.php.net/manual/zh/wrappers.php.php)，可被用户进行缓冲。要注意的是，php_printf 不象大部分 PHP 的 API，它不是二进制安全的。想要二进制安全输出应使用 PHPWRITE。
 
@@ -31,7 +31,7 @@ PHP_FUNCTION(hello_world)
 }
 ```
 
-2. `PHPWRITE(string, strlen(string))`
+2、`PHPWRITE(string, strlen(string))`
 
 描述：PHP二进制安全的输出宏。
 
@@ -57,7 +57,7 @@ PHP_FUNCTION(print_str)
 }
 ```
 
-3. `snprintf(char * str, length, format, var...)`
+3、`snprintf(char * str, length, format, var...)`
 
 描述：snprintf根据参数format来转换并格式化数据，然后将结果复制到参数str所指的字符串数组，必须先为str分配足够的内存。
 
@@ -81,7 +81,7 @@ PHP_FUNCTION(hello_world)
 }
 ```
 
-4. `spprintf(char ** str, max, format, var...)`
+4、`spprintf(char ** str, max, format, var...)`
 
 描述：spprintf是snprintf的动态版本，它会自动根据需要为str分配内存空间，可以通过设置max参数来限制所分配内存空间的最大值，如果此值为0，那将没有限制。
 
